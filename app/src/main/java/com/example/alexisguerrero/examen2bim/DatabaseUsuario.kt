@@ -13,7 +13,7 @@ class DatabaseUsuario {
     companion object {
 
         fun insertarUsuario(usuario: Usuario) {
-            "http://192.168.0.3:1337/Usuario".httpPost(listOf("rol" to usuario.rol, "username" to usuario.nombreUsuario, "password" to usuario.contrasena))
+            "http://192.168.0.3:1337/Usuario".httpPost(listOf("rol" to usuario.rol, "username" to usuario.nombreUsuario, "password" to usuario.passwordUsuario))
                     .responseString { request, _, result ->
                         Log.d("http-ejemplo", request.toString())
                     }

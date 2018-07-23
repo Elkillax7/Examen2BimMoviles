@@ -69,7 +69,7 @@ class DatabaseJugador {
                 val fotoJugador = it["fotoJugador"] as String
                 //val latitud = it["latitud"] as Double
                 // val longitud = it["longitud"] as Double
-                val jugador = Jugador(id,numeroCamiseta,nombreCamiseta,nombreCompletoJugador,poderEspecialDos,fechaIngresoEquipo,goles,fotoJugador,equipoId,0,0)
+                val jugador = Jugador(id,numeroCamiseta,nombreCamiseta,nombreCompletoJugador,poderEspecialDos,fechaIngresoEquipo,goles,equipoId,fotoJugador,0,0)
                 jugadores.add(jugador)
             }
             return jugadores
