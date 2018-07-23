@@ -15,7 +15,7 @@ class DatabaseEquipo {
     companion object {
 
         fun insertarEquipo(equipo:Equipo){
-            "http://192.168.0.3:1337/Equipo".httpPost(listOf("nombre" to equipo.nombre,
+            "http://192.168.1.14:1337/Equipo".httpPost(listOf("nombre" to equipo.nombre,
                     "liga" to equipo.liga,
                     "fechaCreacion" to equipo.fechaCreacion,
                     "numeroCopasInternacionales" to equipo.numeroCopasInternacionales,
@@ -26,14 +26,14 @@ class DatabaseEquipo {
         }
 
         fun delEquipo(id: Int) {
-            "http://192.168.0.3:1337/Equipo/$id".httpDelete()
+            "http://192.168.1.14:1337/Equipo/$id".httpDelete()
                     .responseString { request, response, result ->
                         Log.d("http-ejemplo", request.toString())
                     }
         }
 
         fun updateEquipo(equipo: Equipo) {
-            "http://192.168.0.3:1337/Equipo/${equipo.id}".httpPut(listOf("nombre" to equipo.nombre,
+            "http://192.168.1.14:1337/Equipo/${equipo.id}".httpPut(listOf("nombre" to equipo.nombre,
                     "liga" to equipo.liga,
                     "fechaCreacion" to equipo.fechaCreacion,
                     "numeroCopasInternacionales" to equipo.numeroCopasInternacionales,
@@ -47,7 +47,7 @@ class DatabaseEquipo {
             val equipos: ArrayList<Equipo> = ArrayList()
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
-            val (request, response, result) = "http://192.168.0.3:1337/Equipo".httpGet().responseString()
+            val (request, response, result) = "http://192.168.1.14/Equipo".httpGet().responseString()
             val jsonEquipo = result.get()
 
             val parser = Parser()
@@ -71,7 +71,7 @@ class DatabaseEquipo {
             val equipos: ArrayList<Equipo> = ArrayList()
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
-            val (request, response, result) = "http://192.168.0.3:1337/Equipo?nombre=${nombre}".httpGet().responseString()
+            val (request, response, result) = "http://192.168.1.14:1337/Equipo?nombre=${nombre}".httpGet().responseString()
             val jsonEquipo = result.get()
 
             val parser = Parser()

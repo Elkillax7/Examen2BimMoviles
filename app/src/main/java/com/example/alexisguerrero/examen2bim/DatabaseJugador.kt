@@ -15,7 +15,7 @@ class DatabaseJugador {
     companion object {
 
         fun insertJugador(jugador:Jugador){
-            "http://192.168.0.3:1337/Pokemon".httpPost(listOf("numeroCamiseta" to jugador.numeroCamiseta,
+            "http://192.168.1.14:1337/Pokemon".httpPost(listOf("numeroCamiseta" to jugador.numeroCamiseta,
                     "nombreCamiseta" to jugador.nombreCamiseta,
                     "nombreCompletoJugador" to jugador.nombreCompletoJugador,
                     "poderEspecialDos" to jugador.poderEspecialDos,
@@ -29,14 +29,14 @@ class DatabaseJugador {
         }
 
         fun delJugador(id: Int) {
-            "http://192.168.0.3:1337/Jugador/$id".httpDelete()
+            "http://192.168.1.14:1337/Jugador/$id".httpDelete()
                     .responseString { request, response, result ->
                         Log.d("http-ejemplo", request.toString())
                     }
         }
 
         fun updateJugador(jugador: Jugador) {
-            "http://192.168.0.3:1337/Jugador/${jugador.id}".httpPut(listOf("numero" to jugador.numeroCamiseta,
+            "http://192.168.1.14:1337/Jugador/${jugador.id}".httpPut(listOf("numero" to jugador.numeroCamiseta,
                     "nombreCamiseta" to jugador.nombreCamiseta,
                     "nombreCompletoJugador" to jugador.nombreCompletoJugador,
                     "poderEspecialDos" to jugador.poderEspecialDos,
@@ -51,7 +51,7 @@ class DatabaseJugador {
             val jugadores: ArrayList<Jugador> = ArrayList()
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
-            val (request, response, result) = "http://192.168.0.3:1337/Jugador?equipoFutbolId=$equipoId".httpGet().responseString()
+            val (request, response, result) = "http://192.168.1.14:1337/Jugador?equipoFutbolId=$equipoId".httpGet().responseString()
             val jsonJugador = result.get()
 
             val parser = Parser()
